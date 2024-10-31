@@ -50,16 +50,16 @@ async create(payload) {
 
     async update(id, payload) {
     const filter = {
-        _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
+      _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     };
     const update = this.extractContactData(payload);
     const result = await this.Contact.findOneAndUpdate(
-        filter,
-        { $set: update },
-        { returnDocument: "after" }
+      filter,
+      { $set: update },
+      { returnDocument: "after" }
     );
-    return result.value; // return result;
-    }
+    return result;
+  }
 
     async delete(id) {
     const result = await this.Contact.findOneAndDelete({
